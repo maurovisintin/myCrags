@@ -15,7 +15,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <h1>Crag list </h1>
+      <h1 className="center text-center w-full text-xl pt-6">Crag list </h1>
       {data && data.map((crag) => <CragListItem key={crag.id} data={crag} />)}
     </div>
   );
