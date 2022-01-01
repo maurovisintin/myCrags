@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { trpc } from "@/utils/trpc";
 
 import { inferQueryResponse } from "./api/trpc/[trpc]";
-import { CragListItem } from "./crag-list-item";
+import { CragListItem } from "../components/crag-list-item";
 
 type CragFromServer = inferQueryResponse<"get-crags">;
 
