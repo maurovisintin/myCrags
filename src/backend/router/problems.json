@@ -1,4 +1,4 @@
 {"problems": [
-{ "id": 1, "name": "Ajde", "grade": "6b", "description": "easy", "imgUrl": "https://res.cloudinary.com/dlkxtrc8y/image/upload/w_1500,c_scale/v1645179398/Ajde_6b_ij9xyc.jpg"},
-{ "id": 2, "name": "Banana bread", "grade": "6c+", "description": "test", "imgUrl": "https://res.cloudinary.com/dlkxtrc8y/image/upload/v1645179402/Banana_bread_6c_gycdur.jpg"}
+{ "id": 1, "name": "Ajde", "grade": "6b", "description": "easy", "imgUrl": "https://res.cloudinary.com/dlkxtrc8y/image/upload/w_1500,c_scale/des/v1645179398/Ajde_6b_ij9xyc.jpg"},
+{ "id": 2, "name": "Banana bread", "grade": "6c+", "description": "test", "imgUrl": "https://res.cloudinary.com/dlkxtrc8y/image/upload/v1645179402/des/Banana_bread_6c_gycdur.jpg"}
 ]}
