@@ -13,7 +13,7 @@ import {
   valueLabelFormat,
   getValueFromLabel,
   getLabelFromValue,
-} from "./utils/grades";
+} from "../utils/grades";
 
 type ProblemsFromServer = inferQueryResponse<"get-problems">;
 
