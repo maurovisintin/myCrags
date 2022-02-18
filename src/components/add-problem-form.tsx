@@ -24,7 +24,7 @@ export const InputProblemForm = ({ showDisplayMode }: Props) => {
   const handleInputGradeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setGrade(event.target.value as number);
+    setGrade(parseInt(event.target.value));
   };
 
   const addProblem = () => {
