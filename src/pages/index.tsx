@@ -49,7 +49,7 @@ const Home: NextPage = () => {
           )}`}
         </p>
         <Slider
-          aria-label="Grades"
+          getAriaLabel={() => "Grades range"}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
           step={5}
