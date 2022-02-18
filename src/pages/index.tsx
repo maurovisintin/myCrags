@@ -36,7 +36,9 @@ const Home: NextPage = () => {
 
   const filteredProblems = data?.filter(
     (problem) =>
+      // @ts-ignore
       getValueFromLabel(problem?.grade) >= gradeFilter[0] &&
+      // @ts-ignore
       getValueFromLabel(problem?.grade) <= gradeFilter[1]
   );
 
