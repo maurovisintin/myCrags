@@ -1,16 +1,17 @@
 import * as trpc from "@trpc/server";
 import { prisma } from "@/backend/utils/prisma";
 
-import data from "./crags.json";
+import data from "./problems.json";
 
 export const appRouter = trpc
   .router()
-  .query("get-crags", {
+  .query("get-problems", {
     async resolve() {
       // const bothPokemon = await prisma.pokemon.findMany({
       //   where: { id: { in: [first, second] } },
       // });
-      return data.crags;
+
+      return data.problems;
     },
   });
   // .mutation("cast-vote", {
