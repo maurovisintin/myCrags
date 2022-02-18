@@ -11,9 +11,9 @@ export const ProblemListItem = ({ data }: Props) => {
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-10">
       <div className="md:flex">
         <div className="md:flex-shrink-0">
-          {data.imgUrl && (
+          {data.imageUrl && (
             <Image
-              src={data.imgUrl}
+              src={data.imageUrl}
               alt="crag image"
               width={IMG_WIDTH * 0.78}
               height={IMG_WIDTH}

@@ -1,79 +1,38 @@
 import type { NextPage } from "next";
-import { trpc } from "@/utils/trpc";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
 
-import { inferQueryResponse } from "./api/trpc/[trpc]";
-import { ProblemListItem } from "../components/problem-list-item";
-import { useState } from "react";
-import {
-  grades,
-  valueLabelFormat,
-  getValueFromLabel,
-  getLabelFromValue,
-} from "../utils/grades";
+import React, { useState } from "react";
 
-type ProblemsFromServer = inferQueryResponse<"get-problems">;
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
-function valuetext(value: number) {
-  return `${value}`;
-}
+import { InputProblemForm } from "../components/add-problem-form";
+import { DisplayContent } from "../components/display-content";
+
+const fabStyle = {
+  position: "absolute",
+  bottom: 16,
+  right: 16,
+  zIndex: 99,
+};
 
 const Home: NextPage = () => {
-  const [gradeFilter, setGradeFilter] = useState([15, 50]);
-
-  const { data, refetch, isLoading } = trpc.useQuery(["get-problems"], {
-    refetchInterval: false,
-    refetchOnReconnect: false,
-    refetchOnWindowFocus: false,
-  });
-
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setGradeFilter(newValue as number[]);
-  };
-
-  const filteredProblems = data?.filter(
-    (problem) =>
-      // @ts-ignore
-      getValueFromLabel(problem?.grade) >= gradeFilter[0] &&
-      // @ts-ignore
-      getValueFromLabel(problem?.grade) <= gradeFilter[1]
-  );
-
-  const renderSlider = () => {
-    return (
-      <div className="container mx-auto px-12 py-8">
-        <p className="center text-center w-full text-xl pt-12 py-4 font-bold">
-          {`GRADE: ${getLabelFromValue(gradeFilter[0])} - ${getLabelFromValue(
-            gradeFilter[1]
-          )}`}
-        </p>
-        <Slider
-          getAriaLabel={() => "Grades range"}
-          valueLabelFormat={valueLabelFormat}
-          getAriaValueText={valuetext}
-          step={5}
-          value={gradeFilter}
-          onChange={handleChange}
-          valueLabelDisplay="auto"
-          marks={grades.filter((x, i) => i % 3 === 0)}
-        />
-      </div>
-    );
-  };
+  const [isAddMode, setIsAddMode] = useState(false);
 
   return (
     <div>
-      <h1 className="center text-center w-full text-2xl pt-12 font-bold ">
-        DEŠ Spray Wall Boulders
-      </h1>
-      {renderSlider()}
-      {filteredProblems &&
-        filteredProblems.map((problem) => (
-          <ProblemListItem key={problem.id} data={problem} />
-        ))}
+      {isAddMode ? (
+        <InputProblemForm showDisplayMode={() => setIsAddMode(false)} />
+      ) : (
+        <DisplayContent />
+      )}
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={fabStyle}
+        onClick={() => setIsAddMode(true)}
+      >
+        <AddIcon />
+      </Fab>
     </div>
   );
 };
