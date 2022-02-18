@@ -30,7 +30,7 @@ export const DisplayContent = () => {
   const renderSlider = () => {
     return (
       <div className="container mx-auto px-12 py-8">
-        <p className="center text-center w-full text-xl pt-12 py-4 font-bold">
+        <p className="center text-center w-full text-xl py-4 font-bold">
           {`GRADE: ${getLabelFromValue(gradeFilter[0])} - ${getLabelFromValue(
             gradeFilter[1]
           )}`}
@@ -51,7 +51,7 @@ export const DisplayContent = () => {
 
   return (
     <div>
-      <h1 className="center text-center w-full text-2xl pt-12 font-bold ">
+      <h1 className="center text-center w-full text-2xl pt-12 font-bold">
         DEŠ Spray Wall Boulders faget
       </h1>
       {renderSlider()}
