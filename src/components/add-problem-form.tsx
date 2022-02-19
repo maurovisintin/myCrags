@@ -39,7 +39,6 @@ export const InputProblemForm = ({ showDisplayMode }: Props) => {
     setDescription("");
     setImageUrl("");
     setGrade(10);
-    showDisplayMode();
   };
 
   return (

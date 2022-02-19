@@ -1,11 +1,17 @@
 import { trpc } from "@/utils/trpc";
 import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 import { grades, valueLabelFormat, getLabelFromValue } from "../utils/grades";
 import { ProblemListItem } from "./problem-list-item";
 
-export const DisplayContent = () => {
+type Props = {
+  showInputMode: () => void;
+};
+
+export const DisplayContent = ({ showInputMode }: Props) => {
   const [gradeFilter, setGradeFilter] = useState([15, 50]);
 
   const { data, refetch, isLoading } = trpc.useQuery(["get-problems"], {
@@ -49,16 +55,31 @@ export const DisplayContent = () => {
     );
   };
 
+  const fabStyle = {
+    position: "absolute",
+    bottom: 16,
+    right: 16,
+    zIndex: 99,
+  };
+
   return (
     <div>
       <h1 className="center text-center w-full text-2xl pt-12 font-bold">
-        DEŠ Spray Wall Boulders faget
+        DEŠ Spray Wall Boulders
       </h1>
       {renderSlider()}
       {filteredProblems &&
         filteredProblems.map((problem) => (
           <ProblemListItem key={problem.id} data={problem} />
         ))}
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={fabStyle}
+        onClick={() => showInputMode()}
+      >
+        <AddIcon />
+      </Fab>
     </div>
   );
 };

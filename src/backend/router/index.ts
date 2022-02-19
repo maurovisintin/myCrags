@@ -9,7 +9,6 @@ export const appRouter = trpc
     async resolve() {
       const problems = await prisma.problem.findMany();
       return problems
-      //return data.problems;
     },
   })
   .mutation("add-problem", {
