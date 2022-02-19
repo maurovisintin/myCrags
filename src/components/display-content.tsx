@@ -35,7 +35,7 @@ export const DisplayContent = ({ showInputMode }: Props) => {
 
   const renderSlider = () => {
     return (
-      <div className="container mx-auto px-12 py-8">
+      <div className="container mx-auto px-12 py-4">
         <p className="center text-center w-full text-xl py-4 font-bold">
           {`GRADE: ${getLabelFromValue(gradeFilter[0])} - ${getLabelFromValue(
             gradeFilter[1]
@@ -64,14 +64,21 @@ export const DisplayContent = ({ showInputMode }: Props) => {
 
   return (
     <div>
-      <h1 className="center text-center w-full text-2xl pt-12 font-bold">
+      <h1 className="center text-center w-full text-2xl pt-8 font-bold">
         DEŠ Spray Wall Boulders
       </h1>
       {renderSlider()}
-      {filteredProblems &&
-        filteredProblems.map((problem) => (
-          <ProblemListItem key={problem.id} data={problem} />
-        ))}
+      <div
+        style={{
+          overflow: "auto",
+          height: `calc(100vh - 250px)`,
+        }}
+      >
+        {filteredProblems &&
+          filteredProblems.map((problem) => (
+            <ProblemListItem key={problem.id} data={problem} />
+          ))}
+      </div>
       <Fab
         color="primary"
         aria-label="add"
