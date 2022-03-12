@@ -19,7 +19,7 @@ export const appRouter = trpc
       grade: z.number(),
     }),
     async resolve({ input }) {
-      const voteInDb = await prisma.problem.create({
+      const problemInDb = await prisma.problem.create({
         data: {
           name: input.name,
           imageUrl: input.imageUrl,
@@ -27,7 +27,7 @@ export const appRouter = trpc
           grade: input.grade
         }
       });
-      return { success: true, vote: voteInDb };
+      return { success: true, problem: problemInDb };
     },
   });
 
